@@ -1,27 +1,32 @@
-/*********Create Elements with DOM*********/
-showMonster();
+import { monsters } from './monsters.js';
+console.log(monsters);
 
-function showMonster() {
-    const monster = document.createElement('div');
-    monster.className = 'monster';
+for (let monster of monsters) {
+    showMonster(monster);
+}
+
+
+function showMonster(monster) {
+    const monsterDiv = document.createElement('div');
+    monsterDiv.className = 'monster';
 
     const img = document.createElement('img');
-    img.src = 'https://robohash.org/6?set=set2';
-    img.alt = 'MD. Sakib Khan';
+    img.src = `https://robohash.org/${monster.id}?set=set2`;
+    img.alt = monster.name;
 
     const name = document.createElement('p');
     name.className = 'name';
-    name.innerText = 'MD. Sakib Khan';
+    name.innerText = monster.name;
 
     const email = document.createElement('p');
     email.className = 'email';
-    email.innerText = 'programmingwithsakib@gmail.com';
+    email.innerText = monster.email;
 
-    monster.append(img, name, email);
+    monsterDiv.append(img, name, email);
 
-    document.querySelector('.monsters').append(monster);
+    document.querySelector('.monsters').append(monsterDiv);
 
-    console.log(monster);
+    console.log(monsterDiv);
 
 }
 
