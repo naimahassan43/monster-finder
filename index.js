@@ -48,3 +48,24 @@ function notFound() {
     console.log(notFoundDiv);
 
 }
+
+document.querySelector('#search-monster').addEventListener('keyup', function(e) {
+    const keyword = e.target.value.toLowerCase();
+
+    const monsters = document.querySelectorAll('.monster');
+
+    for (let monster of monsters) {
+
+
+        const name = monster.children[1].innerText.toLowerCase();
+        const email = monster.children[2].innerText.toLowerCase();
+
+
+
+        if (name.includes(keyword) || email.includes(keyword)) {
+            monster.style.display = 'block';
+        } else {
+            monster.style.display = 'none';
+        }
+    }
+});
