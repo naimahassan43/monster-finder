@@ -54,6 +54,8 @@ document.querySelector('#search-monster').addEventListener('keyup', function(e) 
 
     const monsters = document.querySelectorAll('.monster');
 
+    let notFound = true;
+
     for (let monster of monsters) {
 
 
@@ -64,8 +66,19 @@ document.querySelector('#search-monster').addEventListener('keyup', function(e) 
 
         if (name.includes(keyword) || email.includes(keyword)) {
             monster.style.display = 'block';
+            notFound = false;
         } else {
             monster.style.display = 'none';
         }
     }
+
+    if (notFound) {
+        document.querySelector('.not-found').style.display = 'block';
+    } else {
+        document.querySelector('.not-found').style.display = 'none';
+    }
 });
+
+document.querySelector('#search-monster-form').addEventListener('submit', e => {
+    e.preventDefault();
+})
